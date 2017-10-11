@@ -1,0 +1,26 @@
+{
+  "name": "solar-sis",
+  "version": "1.0.0",
+  "description": "solar serial inverter system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "solar",
+    "inverter",
+    "serialport",
+    "inverter",
+    "json"
+  ],
+  "author": "opengd",
+  "license": "MIT",
+  "dependencies": {
+    "crc16": "^1.0.0",
+    "express": "^4.15.4",
+    "fs": "0.0.1-security",
+    "npmdatelog": "0.0.2",
+    "request": "^2.81.0",
+    "serialport": "^5.0.0"
+  }
+}
