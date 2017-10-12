@@ -19,6 +19,7 @@ const SerialPort = require('serialport');
 var fs = require('fs');
 var log = require('npmdatelog');
 var CRC16 = require('crc16');
+const Influx = require('influx');
 
 log.enableDate('YYYY-MM-DD HH:mm:ss');
 
@@ -26,8 +27,27 @@ log.enableDate('YYYY-MM-DD HH:mm:ss');
 var mqtt = require('mqtt');
 //var client = mqtt.connect('mqtt://localhost');
 
-var calls = JSON.parse(fs.readFileSync(process.argv[2] ? process.argv[2] : 'calls.json', "utf8"));
-var session = JSON.parse(fs.readFileSync(process.argv[3] ? process.argv[3] : 'session.json', "utf8"));
+// Load protocol definition json file, exit node if file could not be loaded
+try {
+	var calls = JSON.parse(fs.readFileSync(process.argv[2] ? process.argv[2] : 'calls.json', "utf8"));
+} catch (ex) {
+	log.error('init:protocol', "Could not load protocol json file '" 
+		+ (process.argv[2] ? process.argv[2] : 'calls.json') 
+		+ "', please check path");
+	log.error('Exit');	
+	process.exit(1);
+}
+
+// Load session json file, exit node if file could not be loaded
+try {
+	var session = JSON.parse(fs.readFileSync(process.argv[3] ? process.argv[3] : 'session.json', "utf8"));
+} catch (ex) {
+	log.error('init:session', "Could not load session json file '" 
+		+ (process.argv[3] ? process.argv[3] : 'session.json') 
+		+ "', please check path");
+	log.error('Exit');
+	process.exit(1);
+}
 
 /**
  * Module exports.
