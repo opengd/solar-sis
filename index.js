@@ -20,12 +20,9 @@ var fs = require('fs');
 var log = require('npmdatelog');
 var CRC16 = require('crc16');
 const Influx = require('influx');
+var mqtt = require('mqtt');
 
 log.enableDate('YYYY-MM-DD HH:mm:ss');
-
-// mqtt stuff
-var mqtt = require('mqtt');
-//var client = mqtt.connect('mqtt://localhost');
 
 // Load protocol definition json file, exit node if file could not be loaded
 try {
@@ -50,6 +47,35 @@ try {
 }
 
 /**
+ *  If config in session file load any EndPoints and create connections
+ *  @public
+ */
+var mqtt_connections = {};
+var influx_connections = {};
+
+if(session.EndPoints) {
+	console.log(session.EndPoints);
+	Object.keys(session.EndPoints).forEach((o, i) => {
+		if(session.EndPoints[o].type == "mqtt") {
+			mqtt_connections[o] = mqtt.connect(session.EndPoints[o].host);
+		} else if (session.EndPoints[o].type == "influx") {
+			i_conf = {};
+			if(session.EndPoints[o].database) i_conf.database = session.EndPoints[o].database;
+			if(session.EndPoints[o].host) i_conf.host = session.EndPoints[o].host;
+			if(session.EndPoints[o].port) i_conf.port = session.EndPoints[o].port;
+			if(session.EndPoints[o].username) i_conf.username = session.EndPoints[o].username;
+			if(session.EndPoints[o].password) i_conf.database = session.EndPoints[o].password;
+			if(session.EndPoints[o].schema) i_conf.schema = session.EndPoints[o].schema;
+
+			influx_connections[o] = new Influx.InfluxDB(i_conf);			   
+		}
+	});
+	//var client = mqtt.connect('mqtt://localhost');
+}
+
+console.log(mqtt_connections);
+
+/**
  * Module exports.
  * @public
  */
@@ -58,6 +84,7 @@ module.exports.mpi = mpi;
 module.exports.calls = calls;
 module.exports.session = session;
 module.exports.SendDataToInflux = SendDataToInflux;
+module.exports.SendDataToInMqtt = SendDataToInMqtt;
 module.exports.cache = cache;
 
 /**
@@ -385,6 +412,30 @@ function SendDataToInflux (data, url) {
 			}
 		});
 	}
+}
+
+/**
+ * Send data to mqtt db
+ * @function
+ * @param {string} data Data string to send
+ */
+function SendDataToInMqtt (data) {
+	/*
+	if (data) {
+		log.info('influx:SEND', data);
+		request.post({
+			headers: {
+				'content-type': 'application/x-www-form-urlencoded'
+			},
+			url: url ? url : session.influxUrl,
+			body: data
+		}, function (error, response, body) {
+			if (error) {
+				log.error('influx', error);
+			}
+		});
+	}
+	*/
 }
 
 /**
