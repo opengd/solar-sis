@@ -59,7 +59,7 @@ if(session.EndPoints) {
 		if(session.EndPoints[o].type == "mqtt") {
 			mqtt_connections[o] = mqtt.connect(session.EndPoints[o].host);
 		} else if (session.EndPoints[o].type == "influx") {
-			i_conf = {};
+			var i_conf = {};
 			if(session.EndPoints[o].database) i_conf.database = session.EndPoints[o].database;
 			if(session.EndPoints[o].host) i_conf.host = session.EndPoints[o].host;
 			if(session.EndPoints[o].port) i_conf.port = session.EndPoints[o].port;
