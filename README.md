@@ -6,12 +6,16 @@ Universal inverter protocol handler specially for solar electricity systems
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+The system is also included in a prebuilt Raspberry PI image supplied by [DIY Tech & Repairs](http://diytechandrepairs.nu/raspberry-solar) You can also find alot of information regarding the main project on his [Youtube channel]()
+
+
+
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Some brain because currently there is not much help here :)
 ```
 
 ### Installing
@@ -34,47 +38,23 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+No tests exist in this project
 
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Feel free to send in bugs/features or any other requests. We will take a look at them all and incorporate them as much as we can. 
+If you want to contribute to the time its spent on this getting it here you can always contribute to the authors below
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Erik Johansson** - *Main developer* - [opengd](https://github.com/opengd)
+* **Daniel Römer** - *Founder/brain/tester* - [daromer2](https://github.com/daromer2)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/opengd/solar-sis/contributors) who participated in this project.
 
 ## License
 
