@@ -1,0 +1,7 @@
+{
+  "name": "solar-sis_mpi",
+  "version": "1.0.0",
+  "dependencies": {
+    "solar-sis": "latest"
+  }
+}

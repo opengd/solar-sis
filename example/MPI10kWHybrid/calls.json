@@ -1,0 +1,151 @@
+{
+  "query_config": {
+    "start_bit": "^",
+    "command_type": "P",
+    "response_type": "D",
+    "data_length_bits": 3,
+    "seperator": ",",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_start": "^",
+    "response_header_length": 4
+  },
+  "query": {
+    "general_status": {
+      "hide": false,
+      "influx": true,
+      "cache": true,
+      "command": "P003GS",
+      "response": {
+        "solar_input_voltage_1": 1,
+        "solar_input_voltage_2": 1,
+        "solar_input_current_1": 1,
+        "solar_input_current_2": 1,
+        "battery_voltage": 1,
+        "battery_capacity": 1,
+        "battery_current": 1,
+        "ac_input_voltage_r": 1,
+        "ac_input_voltage_s": 1,
+        "ac_input_voltage_t": 1,
+        "ac_input_frequency": 1,
+        "ac_input_current_r": 1,
+        "ac_input_current_s": 1,
+        "ac_input_current_t": 1,
+        "ac_output_voltage_r": 1,
+        "ac_output_voltage_s": 1,
+        "ac_output_voltage_t": 1,
+        "ac_output_frequency": 1,
+        "ac_output_current_r": 1,
+        "ac_output_current_s": 1,
+        "ac_output_current_t": 1,
+        "inner_temperature": 1,
+        "component_max_temperature": 1,
+        "external_battery_temperature": 1
+      }
+    },
+    "power_status": {
+      "command": "P003PS",
+      "influx": true,
+      "cache": true,
+      "response": {
+        "solar_input_power_1": 1,
+        "solar_input_power_2": 1,
+        "battery_power": 10,
+        "ac_input_active_power_r": 100,
+        "ac_input_active_power_s": 100,
+        "ac_input_active_power_t": 100,
+        "ac_input_total_active_power": 10,
+        "ac_output_active_power_r": 10,
+        "ac_output_active_power_s": 10,
+        "ac_output_active_power_t": 10,
+        "ac_output_total_active_power": 10,
+        "ac_output_apperent_power_r": 10,
+        "ac_output_apperent_power_s": 10,
+        "ac_output_apperent_power_t": 10,
+        "ac_output_total_apperent_power": 10,
+        "ac_output_power_percentage": 1,
+        "ac_output_connect_status": 1,
+        "solar_input_1_work_status": 1,
+        "solar_input_2_work_status": 1,
+        "battery_power_direction": 1,
+        "dc_ac_power_direction": 1,
+        "line_power_direction": 1
+      }
+    },
+    "feeding_grid_power_calibration": {
+      "command": "P006FPADJ",
+      "response": {
+        "feeding_grid_derection_r": false,
+        "feeding_grid_calibration_power_r": 1,
+        "feeding_grid_derection_s": false,
+        "feeding_grid_calibration_power_s": 1,
+        "feeding_grid_derection_t": false,
+        "feeding_grid_calibration_power_t": 1
+      }
+    },
+    "generated_energy_of_year": {
+      "command": "P010EY",
+      "sum_crc": true,
+      "variables": {
+        "year": [4]
+      },
+      "response": {
+        "generated_energy": 1
+      }
+    },
+    "generated_energy_of_month": {
+      "command": "P010EM",
+      "sum_crc": true,
+      "variables": {
+        "year": [4],
+        "month": [2]
+      },
+      "response": {
+        "generated_energy": 1
+      }
+    },
+    "generated_energy_of_day": {
+      "command": "P010ED",
+      "sum_crc": true,
+      "variables": {
+        "year": [4],
+        "month": [2],
+        "day": [2]
+      },
+      "response": {
+        "generated_energy": 1
+      }
+    }
+  },
+  "set_config": {
+    "start_bit": "^",
+    "command_type": "S",
+    "response_type": "",
+    "data_length_bits": 0,
+    "seperator": ",",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_accept_command": 1,
+    "response_refuse_command": 0,
+    "variable_length_fillout": "0",
+    "response_start": "^",
+    "response_header_length": 4
+  },
+  "set": {
+    "feeding_grid_power_calibration":{
+      "command": "S012FPADJ",
+      "variables": {
+        "feeding_grid_derection": [1, 0, 1],
+        "feeding_grid_calibration_power": [4, 0, 999]
+      }
+    },
+    "f1": {
+      "command": "S013FP",
+      "hide": true,
+      "variables": {
+        "fase": "",
+        "watt": [4, 0, 999]
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "serial_port": "/dev/hidraw0",
+  "serial_baudrate": 2400,
+  "serial_queue_delay": 200,
+  "serial_parsers_readline": "\r",
+  "serial_restart_threshold": 10000,
+  "serial_clear_command_queue_on_restart": true,
+  "http_port": 3001,
+  "influx_pre_header": "pip_",
+  "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
+  "IntervalCommands": [
+    {
+      "name": "general_status",
+      "config": "query_config",
+      "command": "query/general_status",
+      "interval": 3000,
+      "max": 0,
+      "influx": true
+    },
+    {
+      "name": "device_rated_information",
+      "config": "query_config",
+      "command": "query/device_rated_information",
+      "interval": 4000,
+      "max": 0,
+      "influx": true
+    }
+  ], 
+  "OnInit": {
+    "StartInterval": ["general_status", "device_rated_information"]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "solar-sis_pip",
+  "version": "1.0.0",
+  "dependencies": {
+    "solar-sis": "latest"
+  }
+}

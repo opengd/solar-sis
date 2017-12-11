@@ -1,0 +1,25 @@
+{
+  "serial_port": "/dev/serial0",
+  "serial_baudrate": 2400,
+  "serial_queue_delay": 200,
+  "serial_parsers_readline": "\r",
+  "serial_restart_threshold": 10000,
+  "serial_clear_command_queue_on_restart": true,
+  "http_port": 3003,
+  "influx_pre_header": "pcm2_",
+  "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
+  "IntervalCommands": [
+    {
+      "name": "general_status",
+      "config": "query_config",
+      "command": "query/general_status",
+      "interval": 3000,
+      "max": 0,
+      "influx": true,
+      "callback": "general_status"
+    }
+  ], 
+  "OnInit": {
+    "StartInterval": ["general_status"]
+  }
+}

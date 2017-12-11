@@ -1,0 +1,99 @@
+{
+  "query_config": {
+    "start_bit": "",
+    "command_type": "P",
+    "response_type": "D",
+    "data_length_bits": 3,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_start": "(",
+    "response_header_length": 0
+  },
+  "query": {
+    "general_status": {
+      "hide": false,
+      "influx": true,
+      "cache": true,
+      "command": "QPIGS",
+      "crc16": true,
+      "response": {
+        "pv_voltage": 1,
+        "battery_voltage": 1,
+        "charging_current": 1,
+        "charging_current1": 1,
+        "charging_current2": 1,
+        "charging_power": 1,
+	"u_v6": false,
+	"u_v7": false,
+	"u_v8": false,
+	"u_v9": false,
+	"settings": 1
+      }
+    },
+    "device_rated_information": {
+      "command": "QPIRI",
+      "influx": false,
+      "cache": true,
+      "crc16": true,
+      "response": {
+        "grid_rating_voltage": 1,
+        "grid_rating_current": 1,
+        "ac_output_rating_voltage": 1,
+        "ac_output_rating_frecuency": 1,
+        "ac_output_rating_current": 1,
+        "ac_output_rating_apparent_power": 1,
+        "ac_output_rating_active_power": 1,
+        "battery_rating_voltage": 1,
+        "battery_recharge_voltage": 1,
+        "battery_under_voltage": 1,
+        "battery_bulk_voltage": 1,
+        "battery_float_voltage": 1,
+        "battery_type": 1,
+        "current_max_ac_charging": 1,
+        "current_max_charging_current": 1,
+        "input_voltage_range": 1,
+        "output_source_priority": 1,
+        "charger_source_priority": 1,
+        "parallel_max_num": 1,
+        "machine_type": 1,
+        "topology": 1,
+        "output_mode": 1,
+        "battery_re_discharge_voltage": 1,
+        "pv_condition": 1,
+        "pv_power_balance": 1
+      }
+    }
+  },
+  "set_config": {
+    "start_bit": "",
+    "command_type": "S",
+    "response_type": "",
+    "data_length_bits": 0,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_accept_command": 1,
+    "response_refuse_command": 0,
+    "variable_length_fillout": "0",
+    "response_start": "(",
+    "response_header_length": 0
+  },
+  "set": {
+    "feeding_grid_power_calibration":{
+      "command": "S012FPADJ",
+      "variables": {
+        "feeding_grid_derection": [1, 0, 1],
+        "feeding_grid_calibration_power": [4, 0, 999]
+      }
+    },
+    "f1": {
+      "command": "S013FP",
+      "hide": true,
+      "variables": {
+        "fase": "",
+        "watt": [4, 0, 999]
+      }
+    }
+  }
+}
