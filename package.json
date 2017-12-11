@@ -1,6 +1,6 @@
 {
   "name": "solar-sis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "solar serial inverter system",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "npmdatelog": "0.0.2",
     "request": "^2.81.0",
     "serialport": "^5.0.0",
-    "influx": "^5.0.7"
+    "influx": "^5.0.7",
+	"mqtt": "latest"
   }
 }
