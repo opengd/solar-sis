@@ -6,7 +6,7 @@ Universal inverter protocol handler specially for solar electricity systems
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-The system is also included in a prebuilt Raspberry PI image supplied by [DIY Tech & Repairs](http://diytechandrepairs.nu/raspberry-solar) You can also find alot of information regarding the main project on his [Youtube channel]()
+The system is also included in a prebuilt Raspberry PI image supplied by [DIY Tech & Repairs](http://diytechandrepairs.nu/raspberry-solar) You can also find alot of information regarding the main project on his [Youtube channel](https://www.youtube.com/user/daromeresperyd)
 
 
 
@@ -47,7 +47,7 @@ Add additional notes about how to deploy this on a live system
 ## Contributing
 
 Feel free to send in bugs/features or any other requests. We will take a look at them all and incorporate them as much as we can. 
-If you want to contribute to the time its spent on this getting it here you can always contribute to the authors below
+If you want to contribute to the time its spent on this getting it here you can always contribute to the authors below via any of their Patreon/Paypal links
 
 ## Authors
 
