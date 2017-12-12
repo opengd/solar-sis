@@ -20,7 +20,7 @@ serialport 4.0.7
 ```
 
 ### Installing
-
+n
 You can install solar-sis with examples by clone this git repository or retrieve the [solar-sis npm package](https://www.npmjs.com/package/solar-sis).
 
 **Using Git and npm**
@@ -40,7 +40,7 @@ Install nodejs dependencies in example folder.
 npm install
 
 OR if you are using sudo or as root user:
-.
+
 sudo npm install --unsafe-perm
 ```
 Now all dependencies for solar-sis should have been installed and you can run the service using Nodejs.
@@ -74,7 +74,7 @@ sudo npm install solar-sis --unsafe-perm
 ```
 You should then find the example projects folder in "node_modules/solar-sis/example".
 
-Choose a example and start the service by running the project.js file using Nodejs.
+Choose an example and start the service by running the project.js file using Nodejs.
 ```
 sudo node project.js
 ```
