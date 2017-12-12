@@ -4,18 +4,17 @@ Universal inverter protocol handler specially for solar electricity systems
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 The system is also included in a prebuilt Raspberry PI image supplied by [DIY Tech & Repairs](http://diytechandrepairs.nu/raspberry-solar) You can also find alot of information regarding the main project on his [Youtube channel](https://www.youtube.com/user/daromeresperyd)
 
 
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software and how to install them. Currently it only works with serialport 4.0.7 if you are running with the built in USB to Serial converter on the MPP inverters and chargers. This is an big issue but if you stick with 4.0.7 it works and also if you go with the pure serial interface. (This need to be bugged and sorted)
 
 ```
-Some brain because currently there is not much help here :)
+serialport 4.0.7
 ```
 
 ### Installing
@@ -39,10 +38,6 @@ End with an example of getting some data out of the system or using it for a lit
 ## Running the tests
 
 No tests exist in this project
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
