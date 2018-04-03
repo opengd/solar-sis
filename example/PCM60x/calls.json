@@ -33,37 +33,25 @@
     },
     "device_rated_information": {
       "command": "QPIRI",
-      "influx": false,
+      "influx": true,
       "cache": true,
       "crc16": true,
       "response": {
-        "grid_rating_voltage": 1,
-        "grid_rating_current": 1,
-        "ac_output_rating_voltage": 1,
-        "ac_output_rating_frecuency": 1,
-        "ac_output_rating_current": 1,
-        "ac_output_rating_apparent_power": 1,
-        "ac_output_rating_active_power": 1,
-        "battery_rating_voltage": 1,
-        "battery_recharge_voltage": 1,
-        "battery_under_voltage": 1,
-        "battery_bulk_voltage": 1,
-        "battery_float_voltage": 1,
+        "max_output_power": 1,
+        "nominal_battery_voltage": 1,
+        "nominal_charging_current": 1,
+        "absorption_voltage_per_unit": 1,
+        "float_voltage_per_unit": 1,
         "battery_type": 1,
-        "current_max_ac_charging": 1,
-        "current_max_charging_current": 1,
-        "input_voltage_range": 1,
-        "output_source_priority": 1,
-        "charger_source_priority": 1,
-        "parallel_max_num": 1,
-        "machine_type": 1,
-        "topology": 1,
-        "output_mode": 1,
-        "battery_re_discharge_voltage": 1,
-        "pv_condition": 1,
-        "pv_power_balance": 1
+        "remote_battery_voltage_detect": 1,
+        "battery_temperature_compensation": 1,
+        "remote_temperature_detect": 1,
+        "battery_rated_voltage_set": 1,
+        "piece_of_battery_in_serial": 1,
+        "battery_low_warning_voltage": 1,
+        "battery_low_shutdown_detect": 1
       }
-    }
+
   },
   "set_config": {
     "start_bit": "",
@@ -80,20 +68,27 @@
     "response_header_length": 0
   },
   "set": {
-    "feeding_grid_power_calibration":{
-      "command": "S012FPADJ",
+    "bulk_charging" : {
+      "command" : "PBAV",
+      "crc16": true,
       "variables": {
-        "feeding_grid_derection": [1, 0, 1],
-        "feeding_grid_calibration_power": [4, 0, 999]
+        "voltage": ""
       }
     },
-    "f1": {
-      "command": "S013FP",
-      "hide": true,
+    "float_charging" : {
+      "command" : "PBFV",
+      "crc16": true,
       "variables": {
-        "fase": "",
-        "watt": [4, 0, 999]
+        "voltage": ""
+      }
+    },
+    "max_charging": {
+      "command" : "MCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
       }
     }
+
   }
 }

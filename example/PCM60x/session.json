@@ -13,13 +13,41 @@
       "name": "general_status",
       "config": "query_config",
       "command": "query/general_status",
-      "interval": 3000,
+      "interval": 5000,
       "max": 0,
       "influx": true,
       "callback": "general_status"
+    },
+    {
+      "name": "device_rated_information",
+      "config": "query_config",
+      "command": "query/device_rated_information",
+      "interval": 120000,
+      "max": 0,
+      "influx": true
     }
-  ], 
+  ],
+  "QuickCommands": {
+    "bulk_charging": {
+      "command": "set/bulk_charging",
+      "config": "set_config",
+      "description" : "Set battery bulk (constant voltage) charging voltage, requires parameter 'voltage'"
+    },
+    "float_charging": {
+      "command": "set/float_charging",
+      "config": "set_config",
+      "description" : "Set battery float charging voltage, requires parameter 'voltage'"
+    },
+    "max_charging": {
+      "command": "set/max_charging",
+      "config": "set_config",
+      "description" : "Set max charging current, requires parameter 'current'"
+    }
+  },
+
+  "ListenOn": ["bulk_charging","float_charging","max_charging"],
+
   "OnInit": {
-    "StartInterval": ["general_status"]
+    "StartInterval": ["general_status","device_rated_information"]
   }
 }

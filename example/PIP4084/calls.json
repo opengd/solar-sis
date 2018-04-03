@@ -13,7 +13,7 @@
   "query": {
     "general_status": {
       "hide": false,
-      "influx": false,
+      "influx": true,
       "cache": true,
       "command": "QPIGS",
       "crc16": true,
@@ -89,19 +89,60 @@
     "response_header_length": 0
   },
   "set": {
-    "feeding_grid_power_calibration":{
-      "command": "S012FPADJ",
+    "output_source_priority" : {
+      "command" : "POP",
+      "crc16": true,
       "variables": {
-        "feeding_grid_derection": [1, 0, 1],
-        "feeding_grid_calibration_power": [4, 0, 999]
+        "source": ""
       }
     },
-    "f1": {
-      "command": "S013FP",
-      "hide": true,
-      "variables": {
-        "fase": "",
-        "watt": [4, 0, 999]
+    "charger_priority": {
+      "command" : "PCP",
+      "crc16": true,
+      "variables" : {
+        "source" : ""
+      }
+    },
+    "bulk_charging": {
+      "command" : "PCVV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "float_charging": {
+      "command" : "PBFT",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "utility_max_charging": {
+      "command" : "MUCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "max_charging": {
+      "command" : "MCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "back_to_grid": {
+      "command" : "PBCV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "back_to_battery": {
+      "command" : "PBDV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
       }
     }
   }

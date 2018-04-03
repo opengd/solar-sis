@@ -240,6 +240,9 @@ function MergeDataArray (json, queryValues) {
 function GetCrc16 (str) {
   var crc = "";
   Buffer.from(CRC16(str).toString(16), 'hex').forEach((b) => {
+    if (b==10 || b==13 || b==40) {
+        b++;
+    }
     crc += String.fromCharCode(b);
   });
 	return crc;
