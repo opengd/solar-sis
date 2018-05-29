@@ -1,6 +1,6 @@
 {
   "name": "solar-sis",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "solar serial inverter system",
   "main": "index.js",
   "scripts": {
@@ -16,12 +16,12 @@
   "author": "opengd",
   "license": "MIT",
   "dependencies": {
-    "crc16": "^1.0.0",
-    "express": "^4.15.3",
+    "crc16": "latest",
+    "express": "latest",
     "fs": "latest",
     "npmdatelog": "latest",
-    "request": "^2.81.0",
-    "serialport": "^4.0.7",
+    "request": "latest",
+    "serialport": "latest",
     "influx": "latest",
     "mqtt": "latest"
   }
