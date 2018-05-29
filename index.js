@@ -428,7 +428,7 @@ function mpi() {
 		 * @function
 		 */		
 		setInterval(function () {
-			if (!restartingSerialLock && port.isOpen() && cmdQueue.count() > 0 && reciveCommand == undefined) {
+			if (!restartingSerialLock && port.isOpen && cmdQueue.count() > 0 && reciveCommand == undefined) {
 				if (cmdQueue.commands.length > 0) {
 					reciveCommand = cmdQueue.getNextCommand();
 				} else if (cmdQueue.logs.length > 0) {
