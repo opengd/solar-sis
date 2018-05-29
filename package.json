@@ -23,6 +23,7 @@
     "request": "latest",
     "serialport": "latest",
     "influx": "latest",
-    "mqtt": "latest"
+    "mqtt": "latest",
+    "@serialport/parser-readline": "latest"
   }
 }
