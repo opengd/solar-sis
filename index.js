@@ -16,6 +16,7 @@ var express = require('express')
 var app = express()
 var request = require('request');
 const SerialPort = require('serialport');
+const Readline = SerialPort.parsers.Readline;
 var fs = require('fs');
 var log = require('npmdatelog');
 var CRC16 = require('crc16');
@@ -416,9 +417,10 @@ function mpi() {
 		 * @global
 		 */		
 		const port = new SerialPort(session.serial_port, {
-			baudRate: session.serial_baudrate,
-			parser: SerialPort.parsers.readline(session.serial_parsers_readline)
+			baudRate: session.serial_baudrate
 		});
+
+		const parser = port.pipe(new Readline({ delimiter: session.serial_parsers_readline }));
 		
 		/**
 		 * Send data to Converter on the serialport, checks the command queue and send command or log.
@@ -573,7 +575,7 @@ function mpi() {
 		});
 
 		// Event on new data on serialport
-		port.on('data', function (str) {
+		parser.on('data', function (str) {
 			log.info('serial:' + session.serial_port + ':RECIVED_RAW', 'Data: ' + str + " Length: " + str.length);
 			//console.log('str: -' + str + "- length: " + str.length);
 			if (!restartingSerialLock && reciveCommand != undefined) {
