@@ -452,9 +452,14 @@ function mpi() {
 				restartingSerialLock = true;
 				log.error('serial:' + session.serial_port, 'Reciving reached threshold ' + (Date.now() - reciveCommand.last) + 'ms (' + session.serial_restart_threshold + 'ms)')
 				log.warn('serial:' + session.serial_port, 'Close serial port');
-				port.close();
-				log.info('serial:' + session.serial_port, 'Open serial port ');
-				port.open();
+				port.flush();
+				port.close((error) => {
+					if(error) log.error('serial:' + session.serial_port, error);
+					else port.open((error) => {
+							if(error) log.error('serial:' + session.serial_port, error);
+						});
+
+				});
 				if(session.serial_clear_command_queue_on_restart) {
 					cmdQueue.clearCommandQueue();
 				}
