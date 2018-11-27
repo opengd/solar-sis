@@ -40,6 +40,27 @@
         "charging_scc_acc": ["device_status", "8", "7", "8"]
       }
     },
+    "extended_status": {
+      "hide": false,
+      "influx": true,
+      "cache": true,
+      "command": "QPIGS2",
+      "crc16": true,
+      "response": {
+        "pv_input_current_2": 1,
+        "pv_input_voltage_2": 1,
+        "battery_voltage_from_scc_2": 1,
+        "pv_charging_power_2": 1,
+        "device_status_2": 1,
+        "ac_charging_current": 1,
+        "ac_charging_power": 1,
+        "pv_input_current_3": 1,
+        "pv_input_voltage_3": 1,
+        "battery_voltage_from_scc_3": 1,
+        "pv_charging_power_3": 1,
+        "pv_total_charging_power": 1
+      }
+    },
     "device_rated_information": {
       "command": "QPIRI",
       "influx": true,
