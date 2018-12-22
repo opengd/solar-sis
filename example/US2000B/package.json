@@ -1,0 +1,7 @@
+{
+  "name": "solar-sis_pylon",
+  "version": "1.0.1",
+  "dependencies": {
+    "solar-sis": "latest"
+  }
+}
