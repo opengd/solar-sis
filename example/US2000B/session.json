@@ -8,7 +8,9 @@
   "http_port": 3003,
   "influx_pre_header": "pyl_",
   "MQTT_pre_header": "pylon/",
-  "influxUrl": "http://127.0.0.1:8086/write?db=pylonbat&precision=s",
+  "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
+  "influxUser": "user",
+  "influxPassword": "password",
   "IntervalCommands": [
     {
       "name": "get_analog_value",
@@ -16,7 +18,8 @@
       "command": "query/get_analog_value",
       "interval": 3000,
       "max": 0,
-      "influx": true
+      "influx": true,
+      "customMerge": "customMerge"
     }
   ],
   "QuickCommands": {

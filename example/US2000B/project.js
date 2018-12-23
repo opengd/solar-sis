@@ -1,6 +1,6 @@
 'use strict';
 
-var mpi = require("pylonconnect");
+var mpi = require("../../index");
 
 var mqtt = require('mqtt')
 var client  = mqtt.connect('mqtt://localhost')
@@ -51,6 +51,34 @@ function MyMpiCallbacks () {
   
   this.callback_f1 = function (qc, data, arr) {
     myMpi.SendQuickCommand("feeding_grid_power_calibration");
+  }
+
+  this.customMerge = function(json, queryValues) {
+    var c = 0;
+    var respvalue = 0;
+    var ByteNum = 0;
+    //console.log('queryvalues: ' + JSON.stringify(queryValues));
+    var data = queryValues[0]
+    var s = JSON.parse(JSON.stringify(json), (key, value) => {
+      if (typeof value === 'number') {
+        if (value > 0) {
+          ByteNum = value;
+          respvalue = parseInt(data.substring(c, c+2*ByteNum),16);
+          //console.log("key: " + key + " value: " + value + ' c: ' + c + ' ByteNum: ' + ByteNum + ' respvalue: ' + respvalue);
+        }
+        else {
+          ByteNum = -value;
+          respvalue = parseInt(data.substring(c, c+2*ByteNum),16);
+          if (respvalue > 0x7FFF) respvalue = respvalue - 0xFFFF;
+          //console.log("key: " + key + " value: " + value + ' c: ' + c + ' ByteNum: ' + ByteNum + ' respvalue: ' + respvalue);
+        }
+        c+= 2*ByteNum;
+        return respvalue;
+      }
+      else return value;
+    });
+
+    return s;
   }
 }
 
