@@ -358,6 +358,10 @@ function SendDataToInflux (data, url) {
 	if (data) {
 		log.info('influx:SEND', data);
 		request.post({
+			auth: {
+				user: session.influxUser? session.influxUser : '',
+				pass: session.influxPassword? session.influxPassword : ''
+			},
 			headers: {
 				'content-type': 'application/x-www-form-urlencoded'
 			},
@@ -565,6 +569,12 @@ function mpi() {
 					if(element.callback && this.callbacks[element.callback]) {
 						lc.callback = this.callbacks[element.callback];
 					}
+
+					if(element.customMerge && this.callbacks[element.customMerge])
+					{
+						lc.customMerge = this.callbacks[element.customMerge];
+					}
+
 					log.info('queue:ADD_INTERVAL', lc.name + ':' + commandConfig.start_bit + c.command + commandCrc16 + commandConfig.ending_character);
 					cmdQueue.addLogCommand(lc);
 					//console.log(lc);
@@ -596,10 +606,13 @@ function mpi() {
 
 				var dataArray = ResponseToDataArray(commandConfig, ResponseRemoveHeader(commandConfig, str));
 				var command = getJsonCommandObjectFromPath(calls, reciveCommand.name)
+
+				var customMerge = reciveCommand.customMerge != undefined ? reciveCommand.customMerge : MergeDataArray;
+
 				if(command.response) {
-					var mergedDataArray = MergeDataArray(command.response, dataArray);
+					var mergedDataArray = customMerge(command.response, dataArray);
 				} else {						
-					var mergedDataArray = MergeDataArray({"success": 1}, dataArray);
+					var mergedDataArray = customMerge({"success": 1}, dataArray);
 				}
 				//console.log("mergedDataArray: " + JSON.stringify(mergedDataArray));
 				var influxString = ToInfluxString(mergedDataArray);

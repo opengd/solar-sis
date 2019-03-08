@@ -21,7 +21,7 @@
     "fs": "latest",
     "npmdatelog": "latest",
     "request": "latest",
-    "serialport": "latest",
+    "serialport": "4.0.7",
     "influx": "latest",
     "mqtt": "latest",
     "@serialport/parser-readline": "latest"
