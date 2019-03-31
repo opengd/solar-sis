@@ -6,7 +6,7 @@
   "serial_restart_threshold": 10000,
   "serial_clear_command_queue_on_restart": true,
   "http_port": 3004,
-  "influx_pre_header": "mpi_",
+  "influx_device": "mpi",
   "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
   "IntervalCommands": [
     {

@@ -52,6 +52,7 @@
         "battery_low_shutdown_detect": 1
       }
     }
+
   },
   "set_config": {
     "start_bit": "",

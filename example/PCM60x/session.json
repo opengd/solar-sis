@@ -1,13 +1,13 @@
 {
-  "serial_port": "/dev/serial0",
+  "serial_port": "/dev/ttyUSB1",
   "serial_baudrate": 2400,
   "serial_queue_delay": 200,
   "serial_parsers_readline": "\r",
   "serial_restart_threshold": 10000,
   "serial_clear_command_queue_on_restart": true,
   "http_port": 3003,
-  "influx_pre_header": "pcm2_",
-  "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
+  "influx_device": "pcm1",
+  "influxUrl": "http://192.168.10.100:8086/write?db=powerwall&precision=s",
   "IntervalCommands": [
     {
       "name": "general_status",

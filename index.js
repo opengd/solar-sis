@@ -623,7 +623,9 @@ function mpi() {
 				//console.log("command.influx:" + command.influx);
 				if(command.influx) {
 					//console.log(session.influx_pre_header + reciveCommand.name.replace("/", "_") + " " + influxString);
-					SendDataToInflux(session.influx_pre_header + reciveCommand.name.replace("/", "_") + " " + influxString);
+	//				SendDataToInflux(session.influx_pre_header + reciveCommand.name.replace("/", "_") + " " + influxString);
+					console.log("device=" + session.influx_device + ",query=" + reciveCommand.name.replace("/", "_") + " " + influxString);
+					SendDataToInflux("solar,device=" + session.influx_device + ",query="+ reciveCommand.name.replace("/", "_") + " " + influxString);
 				}
 
 				if(command.cache) {
