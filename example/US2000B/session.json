@@ -7,6 +7,7 @@
   "serial_clear_command_queue_on_restart": true,
   "http_port": 3003,
   "influx_device": "pyl",
+  "influx_pre": "solar",
   "MQTT_pre_header": "pylon/",
   "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
   "influxUser": "user",

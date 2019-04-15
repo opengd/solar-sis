@@ -1,5 +1,5 @@
 {
-  "serial_port": "/dev/hidraw1",
+  "serial_port": "/dev/ttyUSB0",
   "serial_baudrate": 2400,
   "serial_queue_delay": 200,
   "serial_parsers_readline": "\r",
@@ -7,7 +7,8 @@
   "serial_clear_command_queue_on_restart": true,
   "http_port": 3004,
   "influx_device": "mpi",
-  "influxUrl": "http://localhost:8086/write?db=powerwall&precision=s",
+  "influx_pre": "solar",
+  "influxUrl": "http://192.168.10.100:8086/write?db=powerwall&precision=s",
   "IntervalCommands": [
     {
       "name": "general_status",

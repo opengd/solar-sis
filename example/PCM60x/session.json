@@ -7,6 +7,7 @@
   "serial_clear_command_queue_on_restart": true,
   "http_port": 3003,
   "influx_device": "pcm1",
+  "influx_pre": "solar",
   "influxUrl": "http://192.168.10.100:8086/write?db=powerwall&precision=s",
   "IntervalCommands": [
     {
