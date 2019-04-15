@@ -3,6 +3,6 @@
   "version": "1.0.1",
   "dependencies": {
     "solar-sis": "latest",
-    "serialport": "4.0.7"
+    "serialport": "7.1.4"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "solar-sis",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "solar serial inverter system",
   "main": "index.js",
   "scripts": {
