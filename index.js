@@ -212,6 +212,7 @@ function MergeDataArray (json, queryValues) {
 	var tempValues = {};
 	var s = JSON.parse(JSON.stringify(json), (key, value) => {
 		//console.log("key: " + key + " value: " + value);
+		if (typeof value === 'string') value = '"' + queryValues[c] +  '"';
 		if (typeof value === 'number') value = queryValues[c] / ((value != 0) ? value : 1);
 		else if (typeof value === 'boolean') value = (value) ? queryValues[c] : undefined;
 		else if (value instanceof Array) {
