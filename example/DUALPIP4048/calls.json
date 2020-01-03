@@ -1,0 +1,214 @@
+{
+  "query_config": {
+    "start_bit": "",
+    "command_type": "P",
+    "response_type": "D",
+    "data_length_bits": 3,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_start": "(",
+    "response_header_length": 0
+  },
+  "query": {
+    "general_status0": {
+      "hide": false,
+      "influx": true,
+      "cache": true,
+      "command": "QPGS0",
+      "crc16": true,
+      "response": {
+        "parallel_mode": 1,
+		"serial_num": 1,
+        "work_mode": "string",
+		"fualt_code": 1,
+        "ac_in_volt": 1,
+        "ac_in_freq": 1,
+        "ac_out_volt": 1,
+        "ac_out_freq": 1,
+        "ac_out_power": 1,
+        "ac_out_active_power": 1,
+        "load_percent": 1,
+		"battery_volt": 1,
+        "battery_charging_current0": 1,
+        "battery_capacity": 1,
+        "pv_input_voltage_0": 1,
+        "total_charging_current0": 1,
+        "total_ac_output_apparent_power": 1,
+		"total_ac_output_active_power": 1,
+		"total_ac_output_percent": 1,
+		"device_status": true,
+		"output_mode": 1,
+		"charger_source_priority": 1,
+		"max_charge_current": 1,
+		"max_charge_range": 1,
+		"max_ac_charge_current": 1,
+        "pv_input_current_for_battery0": 1,
+        "battery_discharge_current": 1
+      }
+    },
+    "general_status1": {
+      "hide": true,
+      "influx": true,
+      "cache": true,
+      "command": "QPGS1",
+      "crc16": true,
+      "response": {
+        "parallel_mode": 1,
+		"serial_num": 1,
+        "work_mode": "string",
+		"fualt_code": 1,
+        "ac_in_volt": 1,
+        "ac_in_freq": 1,
+        "ac_out_volt": 1,
+        "ac_out_freq": 1,
+        "ac_out_power": 1,
+        "ac_out_active_power": 1,
+        "load_percent": 1,
+		"battery_volt": 1,
+        "battery_charging_current1": 1,
+        "battery_capacity": 1,
+        "pv_input_voltage_1": 1,
+        "total_charging_current1": 1,
+        "total_ac_output_apparent_power": 1,
+		"total_ac_output_active_power": 1,
+		"total_ac_output_percent": 1,
+		"device_status": true,
+		"output_mode": 1,
+		"charger_source_priority": 1,
+		"max_charge_current": 1,
+		"max_charge_range": 1,
+		"max_ac_charge_current": 1,
+        "pv_input_current_for_battery1": 1,
+        "battery_discharge_current": 1
+      }
+    },
+    "extended_status": {
+      "hide": true,
+      "influx": true,
+      "cache": true,
+      "command": "QP2G0",
+      "crc16": true,
+      "response": {
+        "pv_input_current_2": 1,
+        "pv_input_voltage_2": 1,
+        "battery_voltage_from_scc_2": 1,
+        "pv_charging_power_2": 1,
+        "device_status_2": 1,
+        "ac_charging_current": 1,
+        "ac_charging_power": 1,
+        "pv_input_current_3": 1,
+        "pv_input_voltage_3": 1,
+        "battery_voltage_from_scc_3": 1,
+        "pv_charging_power_3": 1,
+        "pv_total_charging_power": 1
+      }
+    },
+    "device_rated_information": {
+	  "hide": true,
+      "command": "QPIRI",
+      "influx": true,
+      "cache": true,
+      "crc16": true,
+      "response": {
+        "grid_rating_voltage": 1,
+        "grid_rating_current": 1,
+        "ac_output_rating_voltage": 1,
+        "ac_output_rating_frecuency": 1,
+        "ac_output_rating_current": 1,
+        "ac_output_rating_apparent_power": 1,
+        "ac_output_rating_active_power": 1,
+        "battery_rating_voltage": 1,
+        "battery_recharge_voltage": 1,
+        "battery_under_voltage": 1,
+        "battery_bulk_voltage": 1,
+        "battery_float_voltage": 1,
+        "battery_type": 1,
+        "current_max_ac_charging": 1,
+        "current_max_charging_current": 1,
+        "input_voltage_range": 1,
+        "output_source_priority": 1,
+        "charger_source_priority": 1,
+        "parallel_max_num": 1,
+        "machine_type": 1,
+        "topology": 1,
+        "output_mode": 1,
+        "battery_re_discharge_voltage": 1,
+        "pv_condition": 1,
+        "pv_power_balance": 1
+      }
+    }
+  },
+  "set_config": {
+    "start_bit": "",
+    "command_type": "S",
+    "response_type": "",
+    "data_length_bits": 0,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_accept_command": 1,
+    "response_refuse_command": 0,
+    "variable_length_fillout": "0",
+    "response_start": "(",
+    "response_header_length": 0
+  },
+  "set": {
+    "output_source_priority" : {
+      "command" : "POP",
+      "crc16": true,
+      "variables": {
+        "source": ""
+      }
+    },
+    "charger_priority": {
+      "command" : "PCP",
+      "crc16": true,
+      "variables" : {
+        "source" : ""
+      }
+    },
+    "bulk_charging": {
+      "command" : "PCVV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "float_charging": {
+      "command" : "PBFT",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "utility_max_charging": {
+      "command" : "MUCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "max_charging": {
+      "command" : "MCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "back_to_grid": {
+      "command" : "PBCV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "back_to_battery": {
+      "command" : "PBDV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    }
+  }
+}

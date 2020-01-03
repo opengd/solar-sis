@@ -1,0 +1,87 @@
+{
+  "serial_port": "/dev/ttyUSB0",
+  "serial_baudrate": 2400,
+  "serial_queue_delay": 200,
+  "serial_parsers_readline": "\r",
+  "serial_restart_threshold": 5000,
+  "serial_clear_command_queue_on_restart": true,
+  "http_port": 3001,
+  "influx_device": "pip",
+  "influx_pre": "solar",
+  "influxUrl": "http://172.16.103.9:8086/write?db=powerwall&precision=s",
+  "IntervalCommands": [
+    {
+      "name": "general_status0",
+      "config": "query_config",
+      "command": "query/general_status0",
+      "interval": 3000,
+      "max": 0,
+      "influx": true
+    },
+	{
+      "name": "general_status1",
+      "config": "query_config",
+      "command": "query/general_status1",
+      "interval": 3000,
+      "max": 0,
+      "influx": true
+    },
+    {
+      "name": "device_rated_information",
+      "config": "query_config",
+      "command": "query/device_rated_information",
+      "interval": 4000,
+      "max": 0,
+      "influx": true
+    }
+  ],
+  "QuickCommands": {
+    "output_source_priority": {
+      "command": "set/output_source_priority",
+      "config": "set_config",
+      "description" : "Set output source priority, requires parameter 'source': 00 for utility first, 01 for solar first, 02 for SBU priority "
+    },
+    "charger_priority": {
+      "command": "set/charger_priority",
+      "config": "set_config",
+      "description" : ["Set device charger priority, requires parameter 'source'",
+                       "For HS: 00 for utility first, 01 for solar first, 02 for solar and utility, 03 for only solar charging",
+                       "For MS: 00 for utility first, 01 for solar first, 03 for only solar charging"]
+    },
+    "bulk_charging": {
+      "command": "set/bulk_charging",
+      "config": "set_config",
+      "description" : "Set battery bulk (constant voltage) charging voltage, requires parameter 'voltage' 48.0V ~ 58.4V for 48V unit, it cannot be set lower than float voltage"
+    },
+    "float_charging": {
+      "command": "set/float_charging",
+      "config": "set_config",
+      "description" : "Set battery float charging voltage, requires parameter 'voltage' 48.0V ~ 58.4V for 48V unit"
+    },
+    "utility_max_charging": {
+      "command": "set/utility_max_charging",
+      "config": "set_config",
+      "description" : "Set utility max charging current, requires parameter 'current'"
+    },
+    "max_charging": {
+      "command": "set/max_charging",
+      "config": "set_config",
+      "description" : "Set max charging current, requires parameter 'current'"
+    },
+    "back_to_grid": {
+      "command": "set/back_to_grid",
+      "config": "set_config",
+      "description" : "Set battery recharge voltage (back to grid), requires parameter 'voltage', check your model's manual for allowed values"
+    },
+    "back_to_battery": {
+      "command": "set/back_to_battery",
+      "config": "set_config",
+      "description" : "Set battery re-discharge voltage (back to battery), requires parameter 'voltage', check your model's manual for allowed values"
+    }
+  },
+
+  "ListenOn": ["output_source_priority","charger_priority","bulk_charging","float_charging","utility_max_charging","max_charging","back_to_grid","back_to_battery"],
+  "OnInit": {
+    "StartInterval": ["general_status0","general_status1","device_rated_information"]
+  }
+}
