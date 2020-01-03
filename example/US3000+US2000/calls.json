@@ -1,0 +1,165 @@
+{
+  "query_config": {
+    "start_bit": "",
+    "command_type": "P",
+    "response_type": "D",
+    "data_length_bits": 3,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "response_start": "~",
+    "response_header_length": 14
+  },
+  "query": {
+    "get_analog_value": {
+      "command": "~20014642E002FFFD0A",
+      "influx": true,
+      "cache": true,
+      "crc16": false,
+      "variables": {
+        "Command": 1
+      },
+      "response": {
+        "Ammount_of_Pack": 1,
+        "Cells_count": 1,
+        "Cell1_voltage": 2,
+        "Cell2_voltage": 2,
+        "Cell3_voltage": 2,
+        "Cell4_voltage": 2,
+        "Cell5_voltage": 2,
+        "Cell6_voltage": 2,
+        "Cell7_voltage": 2,
+        "Cell8_voltage": 2,
+        "Cell9_voltage": 2,
+        "Cell10_voltage": 2,
+        "Cell11_voltage": 2,
+        "Cell12_voltage": 2,
+        "Cell13_voltage": 2,
+        "Cell14_voltage": 2,
+        "Cell15_voltage": 2,
+        "Temperature_count": 1,
+        "Temperature_1": 2,
+        "Temperature_2": 2,
+        "Temperature_3": 2,
+        "Temperature_4": 2,
+        "Temperature_5": 2,
+        "Pack_current": 2,
+        "Pack_voltage": 2,
+		"User_defined": 2,
+		"User_defined1": 3,
+		"Pack_cycle": 2,
+		"Pack_remains_mAh": 3,
+        "Pack_total_mAh": 3,
+		"Cells_count_P2": 1,
+        "Cell1_voltage_P2": -2,
+        "Cell2_voltage_P2": -2,
+        "Cell3_voltage_P2": -2,
+        "Cell4_voltage_P2": -2,
+        "Cell5_voltage_P2": -2,
+        "Cell6_voltage_P2": -2,
+        "Cell7_voltage_P2": -2,
+        "Cell8_voltage_P2": -2,
+        "Cell9_voltage_P2": -2,
+        "Cell10_voltage_P2": -2,
+        "Cell11_voltage_P2": -2,
+        "Cell12_voltage_P2": -2,
+        "Cell13_voltage_P2": -2,
+        "Cell14_voltage_P2": -2,
+        "Cell15_voltage_P2": -2,
+        "Temperature_count_P2": 1,
+        "Temperature_1_P2": -2,
+        "Temperature_2_P2": -2,
+        "Temperature_3_P2": -2,
+        "Temperature_4_P2": -2,
+        "Temperature_5_P2": -2,
+        "Pack_current_P2": -2,
+        "Pack_voltage_P2": 2,
+		"User_defined_P2": 2,
+		"User_defined1_P2": 3,
+		"Pack_cycle_P2": 2,
+		"Pack_remains_mAh_P2": 3,
+        "Pack_total_mAh_P2": 3,
+		"check2": 3
+		},
+      "MQTTConfig": {
+        "Pack_current": 1,
+        "Pack_current_P2": 1,
+        "Pack_remains_mAh": 2,
+        "Pack_remains_mAh_P2": 2
+      }
+    }
+  },
+  "set_config": {
+    "start_bit": "",
+    "command_type": "S",
+    "response_type": "",
+    "data_length_bits": 0,
+    "seperator": " ",
+    "ending_character": "\r",
+    "crc_length": 2,
+    "crc16":true,
+    "response_accept_command": 1,
+    "response_refuse_command": 0,
+    "variable_length_fillout": "0",
+    "response_start": "(",
+    "response_header_length": 0
+  },
+  "set": {
+    "output_source_priority" : {
+      "command" : "POP",
+      "crc16": true,
+      "variables": {
+        "source": ""
+      }
+    },
+    "charger_priority": {
+      "command" : "PCP",
+      "crc16": true,
+      "variables" : {
+        "source" : ""
+      }
+    },
+    "bulk_charging": {
+      "command" : "PCVV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "float_charging": {
+      "command" : "PBFT",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "utility_max_charging": {
+      "command" : "MUCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "max_charging": {
+      "command" : "MCHGC0",
+      "crc16": true,
+      "variables" : {
+        "current" : ""
+      }
+    },
+    "back_to_grid": {
+      "command" : "PBCV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    },
+    "back_to_battery": {
+      "command" : "PBDV",
+      "crc16": true,
+      "variables" : {
+        "voltage" : ""
+      }
+    }
+  }
+}

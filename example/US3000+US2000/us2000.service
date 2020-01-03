@@ -1,0 +1,13 @@
+# copy this file to /lib/systemd/system/
+
+[Unit]
+Description=US2000 Poller
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/home/pi/solar-sis/example/US2000B
+ExecStart=/usr/bin/node /home/pi/solar-sis/example/US2000B/project.js
+
+[Install]
+WantedBy=multi-user.target
