@@ -43,7 +43,7 @@
         "Temperature_3": 2,
         "Temperature_4": 2,
         "Temperature_5": 2,
-        "Pack_current": 2,
+        "Pack_current": -2,
         "Pack_voltage": 2,
 		"User_defined": 2,
 		"User_defined1": 3,
