@@ -1,0 +1,13 @@
+# copy this file to /lib/systemd/system/
+
+[Unit]
+Description=PIP4048 Paralel Poller
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/home/pi/solar-sis/example/DUALPIP4048
+ExecStart=/usr/bin/node /home/pi/solar-sis/example/DUALPIP4048/project.js
+
+[Install]
+WantedBy=multi-user.target
