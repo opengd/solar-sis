@@ -2,6 +2,8 @@
   "serial_port": "/dev/serial/by-id/usb-FTDI_USB-RS232_Cable_FT1Y00GS-if00-port0",
   "serial_baudrate": 1200,
   "serial_queue_delay": 200,
+  "mqttserver": "mqtt://localhost",
+  "mqtttopic": "solarsis/inverter/",
   "serial_parsers_readline": "\r",
   "serial_restart_threshold": 10000,
   "serial_clear_command_queue_on_restart": true,
