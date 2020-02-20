@@ -23,12 +23,6 @@ var CRC16 = require('crc16');
 
 log.enableDate('YYYY-MM-DD HH:mm:ss');
 
-// mqtt stuff
-var mqtt = require('mqtt');
-//var client = mqtt.connect('mqtt://localhost');
-
-var calls = JSON.parse(fs.readFileSync(process.argv[2] ? process.argv[2] : 'calls.json', "utf8"));
-var session = JSON.parse(fs.readFileSync(process.argv[3] ? process.argv[3] : 'session.json', "utf8"));
 
 /**
  * Module exports.
@@ -41,11 +35,33 @@ module.exports.session = session;
 module.exports.SendDataToInflux = SendDataToInflux;
 module.exports.cache = cache;
 
+
+var calls = JSON.parse(fs.readFileSync(process.argv[2] ? process.argv[2] : 'calls.json', "utf8"));
+var session = JSON.parse(fs.readFileSync(process.argv[3] ? process.argv[3] : 'session.json', "utf8"));
+
+// mqtt stuff
+const mqtt = require('mqtt')
+//cybertza 20/02/2020 test
+// define in session.json
+// "mqttserver": "mqtt://yourserver",
+// "mqtttopic": "solarsis/inverter/",
+// no user support just yet
+let mqttserver = (session.mqttserver || 'mqtt://localhost');
+let mqtttopic = (session.mqtttopic || "solarsis/inverter");
+var client  = mqtt.connect(mqttserver,{will: { topic: mqtttopic + 'LWT', payload: 'Offline', qos: 1, retain: true, properties: {willDelayInterval: 30 }},username: 'power'});
+
 /**
  * A object to be added to the CommandQueue for scheduled to be sent to the converter on serialport
  * @class
  * @param  {string} name The name of the queue command
  */
+ 
+client.on('connect', () => {
+  // Inform HASS.IO State of sensor, valuable if you want to do a notify when comms are down.
+  client.publish(mqtttopic + 'LWT', 'Online')
+})
+
+ 
 function QueueCommand(name) {
 	this.name = name;
 	this.cmd = [];
@@ -211,13 +227,10 @@ function MergeDataArray (json, queryValues) {
 	var c = 0;
 	var tempValues = {};
 	var s = JSON.parse(JSON.stringify(json), (key, value) => {
-		//console.log("key: " + key + " value: " + value);
 		if (typeof value === 'string') value = '"' + queryValues[c] +  '"';
 		if (typeof value === 'number') value = queryValues[c] / ((value != 0) ? value : 1);
 		else if (typeof value === 'boolean') value = (value) ? queryValues[c] : undefined;
 		else if (value instanceof Array) {
-			//console.log(JSON.stringify(value));
-			//console.log(tempValues[value[0]] + " " + value[1] + " " + value[2] + " " + value[3]);
 			if(value.length == 4 && tempValues[value[0]] && tempValues[value[0]].toString().length == Number(value[1])) {
 				value = tempValues[value[0]].toString().substring(Number(value[2]), Number(value[3]));
 			} else {
@@ -226,6 +239,14 @@ function MergeDataArray (json, queryValues) {
 		} else if (!Number.isNaN(Number(value))) value = Number(value);
 		c++;
 		tempValues[key] = value;
+		
+		// CyberTza 20/02/2020 just doing mqtt here since i dont know better
+		//if mqtt is defined do this else dont.
+		//console.log("key: " + key + " value: " + value + " Qvalue: " + queryValues[c]);
+		//if ( key == "") console.log("key: " + key + " value: " + value + " Qvalue: " + queryValues[c]);  // we dont want this 
+		if ( key == "") return value; // we dont want empty keys to mqtt, so lets just exit now.
+		//client.publish('solarsis/pip/' + key, value.toString() );
+		client.publish(mqtttopic + key, value.toString() );
 		return value;
 	});
 
@@ -357,7 +378,7 @@ function ResponseToDataArray(commandConfig, str) {
  */
 function SendDataToInflux (data, url) {
 	if (data) {
-		log.info('influx:SEND', data);
+		
 		request.post({
 			auth: {
 				user: session.influxUser? session.influxUser : '',
@@ -371,6 +392,22 @@ function SendDataToInflux (data, url) {
 		}, function (error, response, body) {
 			if (error) {
 				log.error('influx', error);
+			}
+			else {
+			if (body.length == 0) {
+				log.info ('influx','Sent Successfully');
+			}	
+			else {
+				log.error ('influx','');
+				log.error ('influx','');
+				log.error ('influx','------------------ERROR-------------------------------------------');
+				log.error ('influx','');
+				log.error ('influx','');
+				log.error ('influx', body);
+				log.error ('influx','');
+				log.error ('influx','------------------ERROR (reason at end of string)------------------');
+				//updated CyberTza 20/02/2020
+			}
 			}
 		});
 	}
