@@ -1,6 +1,7 @@
 'use strict';
 
-var mpi = require("solar-sis");
+//var mpi = require("solar-sis"); work around for NPM not updated to same as Git
+var mpi = require("../../index");
 
 var mqtt = require('mqtt')
 var client  = mqtt.connect('mqtt://localhost')
